@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Cover Letter Web Gen</title>
+        <style>
+            
+        </style>
+    </head>
+    
+    <body onload="onLoad()">
+        <!-- Auto Mail Exam Invite -->
+            <h2>Automail - Cover Letter</h2>
+            <hr>
+            <div class="aplication">
+                <form>
+                    <label>Company name:</label><br>
+                    <input type="text" id="fname" placeholder="Enter Company name" value="Company"><br><br>
+                    <label>Availability:</label><br>
+                    <input type="text" id="avail" placeholder="Enter availability" value="4 - 8">
+                </form>
+                <button onclick="fill_invite()">Fill and copy</button> 
+                <input type="button" value="Print" onclick="printDivContent()">
+            </div>
+            <hr>
+
+            <div class="inv" id="inv">
+                <div class="email-body">
+                    <p><strong>Availability:</strong> <span id = "avail2">4 - 8</span> months</p>
+                    <p><span id="date">February 10, 2023 </span></p>
+                    <p>Dear Hiring Manager<span id="name0"></span>,</p>
+                    <p>
+                        It is my great pleasure to apply for the QA role with <span id="name1">name</span> as posted internally on Linkedin. 
+                        As a 1st-year Software Engineer student at Sheridan College who is passionate about finding bugs before users found them and improving software service quality, this opportunity caught my attention. 
+                        With my proven academic and eagerness to learn new things, I am confident that my familiarity with Quality Assurance testing, Agile methodology knowledge, and attention to detail would qualify me as a competitive candidate for this position.
+                    </p>
+                    <p>    
+                        <span id="name2">name</span>'s requirement aligns with my passion for improving Software quality. Directly related to the requirements of this role, my main interest focuses deeply on quality assurance. 
+                        To prove this matter, when I was applying my knowledge to develop my first Tic Tac Toe game with HTML and CSS, I was struggle a lot in finding bugs. 
+                        It took me well 2 hours to identify, backtracking my logic in code,... etc only to find out that I made a typo in the CSS file. From there, I gain more attention to detail. As a co-op student with <span id="name">name</span>, I would love to contribute similar results in terms of protecting clients and implementing safety measures to increase the quality of the product.
+                    </p>
+                    <p>
+                        Thank you for your time and consideration. With the details listed above that I can bring to <span id="name3">name</span>, I have the commitment and a strong passion for Quality Assurance to succeed as a Co-op student. I would appreciate the chance to meet with you to speak more about this opportunity. 
+                    </p>
+                    <p>Sincerely,</p>    
+                    <p>Linh Tu.</p>
+                </div>
+            </div>
+        <script>
+            function copy(id){
+                var range = document.createRange();
+                range.selectNode(document.getElementById(id));
+                window.getSelection().removeAllRanges(); // clear current selection
+                window.getSelection().addRange(range); // to select text
+                document.execCommand("copy");
+                window.getSelection().removeAllRanges();// to deselect
+            }
+            function onLoad(){
+                const now = new Date();
+                var months = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+                var month = months[ now.getMonth() ];
+                document.getElementById("date").innerHTML = month + " "+now.getDate()+", "+now.getFullYear();
+            }
+            function fill_invite(){
+                document.getElementById("name").innerHTML = document.getElementById("fname").value;
+                document.getElementById("name0").innerHTML = " of " + document.getElementById("fname").value;
+                document.getElementById("name1").innerHTML = document.getElementById("fname").value;
+                document.getElementById("name2").innerHTML = document.getElementById("fname").value;
+                document.getElementById("name3").innerHTML = document.getElementById("fname").value;
+                document.getElementById("avail2").innerHTML = document.getElementById("avail").value;
+                copy("inv");
+            }
+            
+            function printDivContent() {
+                fill_invite();
+                var contentOfDiv = document.getElementById("inv").innerHTML;
+
+                var newWin = window.open('', '', 'height=650, width=650');
+                newWin.document.write('');
+                newWin.document.write('<title>Print Content of Div element by  using Javascript</title>');
+                newWin.document.write('<h2 style="text-align: center;">Linh Tu</h2>');
+                newWin.document.write('<p style="text-align: center; margin: 0; padding-top : 0;">Mississauga,ON  | 647 581 8284 | <span class="blue">linhtu2207@gmail.com</span> | <span class="blue"><a href="https://www.linkedin.com/in/linh-t%E1%BB%AB-53606120a/">Linkedin</a></span><hr>');
+                newWin.document.write(contentOfDiv);
+                newWin.document.write('');
+                newWin.document.close();
+            newWin.print();
+            }
+        </script>
+    
+    </body>
+
+    
+    
+</html>
