@@ -15,12 +15,12 @@
             <div class="aplication">
                 <form>
                     <label>Company name:</label><br>
-                    <input type="text" id="fname" placeholder="Enter Company name" value="Company"><br><br>
+                    <input type="text" id="fname" placeholder="Enter Company name" required ><br><br>
                     <label>Availability:</label><br>
                     <input type="text" id="avail" placeholder="Enter availability" value="4 - 8">
                 </form>
                 <button onclick="fill_invite()">Fill and copy</button> 
-                <input type="button" value="Print" onclick="printDivContent()">
+                <input type="submit" value="Print" onclick="printDivContent() ">
             </div>
             <hr>
 
@@ -71,19 +71,34 @@
                 copy("inv");
             }
             
-            function printDivContent() {
+            function toPDF(){
                 fill_invite();
-                var contentOfDiv = document.getElementById("inv").innerHTML;
+                    
+                    var contentOfDiv = document.getElementById("inv").innerHTML;
 
-                var newWin = window.open('', '', 'height=650, width=650');
-                newWin.document.write('');
-                newWin.document.write('<title>Print Content of Div element by  using Javascript</title>');
-                newWin.document.write('<h2 style="text-align: center;">Linh Tu</h2>');
-                newWin.document.write('<p style="text-align: center; margin: 0; padding-top : 0;">Mississauga,ON  | 647 581 8284 | <span class="blue">linhtu2207@gmail.com</span> | <span class="blue"><a href="https://www.linkedin.com/in/linh-t%E1%BB%AB-53606120a/">Linkedin</a></span><hr>');
-                newWin.document.write(contentOfDiv);
-                newWin.document.write('');
-                newWin.document.close();
-            newWin.print();
+                    var newWin = window.open('', '', 'height=650, width=650');
+                    newWin.document.write('');
+                    newWin.document.write('<title>Print Content of Div element by  using Javascript</title>');
+                    newWin.document.write('<h2 style="text-align: center;">Linh Tu</h2>');
+                    newWin.document.write('<p style="text-align: center; margin: 0; padding-top : 0;">Mississauga,ON  | 647 581 8284 | <span class="blue">linhtu2207@gmail.com</span> | <span class="blue"><a href="https://www.linkedin.com/in/linh-t%E1%BB%AB-53606120a/">Linkedin</a></span><hr>');
+                    newWin.document.write(contentOfDiv);
+                    newWin.document.write('');
+                    newWin.document.close();
+                newWin.print();
+            }
+            function printDivContent() {
+                if (document.getElementById("fname").value != ""){    
+                    toPDF();
+                }
+                else {
+                    let name = prompt("Please enter the company name");
+                    if (name != null && name != ""){
+                        document.getElementById("fname").value = name;
+                        toPDF();
+                    }
+                    
+                }
+
             }
         </script>
     
