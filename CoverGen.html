@@ -14,6 +14,8 @@
             <hr>
             <div class="aplication">
                 <form>
+                    <label>Job Number:</label><br>
+                    <input type="text" id="job" placeholder="Enter Job Number (optional)"><br><br>
                     <label>Company name:</label><br>
                     <input type="text" id="fname" placeholder="Enter Company name" required ><br><br>
                     <label>Availability:</label><br>
@@ -26,6 +28,7 @@
 
             <div class="inv" id="inv">
                 <div class="email-body">
+                    <p id = "jobno"></p>
                     <p><strong>Availability:</strong> <span id = "avail2">4 - 8</span> months</p>
                     <p><span id="date">February 10, 2023 </span></p>
                     <p>Dear Hiring Manager<span id="name0"></span>,</p>
@@ -68,6 +71,11 @@
                 document.getElementById("name2").innerHTML = document.getElementById("fname").value;
                 document.getElementById("name3").innerHTML = document.getElementById("fname").value;
                 document.getElementById("avail2").innerHTML = document.getElementById("avail").value;
+                let jobNum = document.getElementById("jobno")
+                let jobVal = document.getElementById("job").value
+                if (jobVal != "") {
+                    jobNum.innerHTML = "<strong>Job Number:</strong> "+ jobVal
+                }
                 copy("inv");
             }
             
